@@ -20,7 +20,7 @@ public class Submit {
 
     @ManyToOne
     @MapsId("sId")
-    @JoinColumn(name = "S_ID")
+    @JoinColumn(name = "S_ID", columnDefinition = "BIGINT")
     private Student student;
 
     @Column(name = "A_Marks")
