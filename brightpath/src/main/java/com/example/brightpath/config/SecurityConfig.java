@@ -16,38 +16,39 @@ import java.util.Arrays;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-    
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .cors().and()
-            .csrf(csrf -> csrf.disable()) // Disable CSRF
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers(
-                    "/api/**",
-                    "/login",
-                    "/students/register",
-                    "/students",
-                    "/students/profile/**",
-                    "/students/**",
-                    "/teacher/**"
-                ).permitAll()
-                .anyRequest().authenticated()
-            )
-            .httpBasic();
-        
+                .cors().and()
+                .csrf(csrf -> csrf.disable()) // Disable CSRF
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(
+                                "/api/**",
+                                "/login",
+                                "/students/register",
+                                "/students",
+                                "/students/profile/**",
+                                "/students/**",
+                                "/teacher/**")
+                        .permitAll()
+                        .anyRequest().authenticated())
+                .httpBasic();
+
         return http.build();
     }
-    
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
+        configuration.setAllowedOrigins(Arrays.asList(
+                "http://localhost:3000",
+                "https://frontendmalith-ikrrbt8jb-malithsamaradiwakaras-projects.vercel.app"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setExposedHeaders(Arrays.asList("*"));
