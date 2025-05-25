@@ -22,7 +22,7 @@ public class SubmitServiceImpl implements SubmitService {
 
     @Override
     public Submit updateSubmission(Integer assignmentId, Integer studentId, Submit submit) {
-        SubmitId submitId = new SubmitId(assignmentId, studentId);
+        SubmitId submitId = new SubmitId(assignmentId, studentId.longValue());
         Submit existingSubmit = submitRepository.findById(submitId)
                 .orElseThrow(() -> new RuntimeException("Submission not found"));
 
@@ -50,7 +50,7 @@ public class SubmitServiceImpl implements SubmitService {
     }
 
     @Override
-    public void deleteSubmissionBySubmitId(Integer id){
+    public void deleteSubmissionBySubmitId(Integer id) {
         submitRepository.deleteByAssignment_AssignmentId(id);
     }
 }

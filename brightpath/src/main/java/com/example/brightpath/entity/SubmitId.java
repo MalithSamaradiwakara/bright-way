@@ -10,11 +10,12 @@ import java.util.Objects;
 @Embeddable
 public class SubmitId implements Serializable {
     private Integer assignmentId;
-    private Integer sId;
+    private Long sId;
 
-    public SubmitId() {}
+    public SubmitId() {
+    }
 
-    public SubmitId(Integer assignmentId, Integer sId) {
+    public SubmitId(Integer assignmentId, Long sId) {
         this.assignmentId = assignmentId;
         this.sId = sId;
     }
