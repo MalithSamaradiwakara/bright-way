@@ -50,8 +50,17 @@ public class SecurityConfig {
                 "http://localhost:3000",
                 "https://frontendmalith-ikrrbt8jb-malithsamaradiwakaras-projects.vercel.app"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
-        configuration.setAllowedHeaders(Arrays.asList("*"));
-        configuration.setExposedHeaders(Arrays.asList("*"));
+        configuration.setAllowedHeaders(Arrays.asList(
+                "Authorization",
+                "Content-Type",
+                "X-Requested-With",
+                "Accept",
+                "Origin",
+                "Access-Control-Request-Method",
+                "Access-Control-Request-Headers"));
+        configuration.setExposedHeaders(Arrays.asList(
+                "Access-Control-Allow-Origin",
+                "Access-Control-Allow-Credentials"));
         configuration.setAllowCredentials(true);
         configuration.setMaxAge(3600L);
 

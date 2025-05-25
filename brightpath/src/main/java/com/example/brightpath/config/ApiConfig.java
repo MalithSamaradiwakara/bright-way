@@ -17,9 +17,20 @@ public class ApiConfig implements WebMvcConfigurer {
                 .allowedOrigins(
                         "http://localhost:3000",
                         "https://frontendmalith-ikrrbt8jb-malithsamaradiwakaras-projects.vercel.app")
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                .allowedHeaders("*")
-                .allowCredentials(true);
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH")
+                .allowedHeaders(
+                        "Authorization",
+                        "Content-Type",
+                        "X-Requested-With",
+                        "Accept",
+                        "Origin",
+                        "Access-Control-Request-Method",
+                        "Access-Control-Request-Headers")
+                .exposedHeaders(
+                        "Access-Control-Allow-Origin",
+                        "Access-Control-Allow-Credentials")
+                .allowCredentials(true)
+                .maxAge(3600);
     }
 
     /**
