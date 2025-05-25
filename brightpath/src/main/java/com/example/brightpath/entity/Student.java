@@ -9,7 +9,7 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "S_ID")
+    @Column(name = "S_ID", columnDefinition = "BIGINT")
     private Long id;
 
     @Column(name = "S_Name", nullable = false)
@@ -25,7 +25,7 @@ public class Student {
     private String photo;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "student")
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
     private Login login;
 
     // Getters and Setters
