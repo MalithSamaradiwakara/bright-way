@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "Student")
+@Table(name = "student")
 public class Student {
 
     @Id
@@ -12,20 +12,23 @@ public class Student {
     @Column(name = "S_ID", columnDefinition = "BIGINT")
     private Long id;
 
-    @Column(name = "S_Name", nullable = false)
+    @Column(name = "S_NAME")
     private String name;
 
-    @Column(name = "S_Email", unique = true, nullable = false)
+    @Column(name = "S_EMAIL")
     private String email;
 
-    @Column(name = "S_Contact", nullable = false)
-    private String contact;
+    @Column(name = "S_PHONE")
+    private String phone;
 
-    @Column(name = "S_Photo", unique = true, nullable = false)
+    @Column(name = "S_ADDRESS")
+    private String address;
+
+    @Column(name = "S_PHOTO")
     private String photo;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "LOGIN_ID")
     private Login login;
 
     // Getters and Setters
@@ -53,12 +56,20 @@ public class Student {
         this.email = email;
     }
 
-    public String getContact() {
-        return contact;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getPhoto() {
